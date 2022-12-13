@@ -4,7 +4,7 @@ import useFetch from "./services/useFetch";
 import Spinner from "./Spinner";
 import PageNotFound from "./PageNotFound";
 
-export default function Detail() {
+export default function Detail({addToCart}) {
   const { id } = useParams();
   const navigate = useNavigate();
   const { data: product, loading, error } = useFetch(`products/${id}`);
@@ -19,11 +19,18 @@ export default function Detail() {
       <p>{product.description}</p>
       <p id="price">${product.price}</p>
       <p>
-        <button className="btn btn-primary" onClick={() => navigate("/cart")}>
+        <button className="btn btn-primary" onClick={addToCartAndNavigate}>
           Add to cart
         </button>
       </p>
       <img src={`/images/${product.image}`} alt={product.category} />
     </div>
   );
+
+  function addToCartAndNavigate(){
+      console.log("DEBUG XD")
+      console.log(product)
+      addToCart(product)
+      //navigate("/cart")
+  }
 }

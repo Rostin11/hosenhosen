@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom";
 import PageNotFound from "./PageNotFound";
 import { Link } from "react-router-dom";
 
-export default function Products() {
+export default function Products({addToCart}) {
   const [size, setSize] = useState("");
   const { category } = useParams();
 
