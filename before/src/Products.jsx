@@ -13,6 +13,8 @@ export default function Products({addToCart}) {
     "products?category=" + category
   );
 
+
+
   function renderProduct(p) {
     return (
       <div key={p.id} className="product">
