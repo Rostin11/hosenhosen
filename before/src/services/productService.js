@@ -6,6 +6,13 @@ export async function getProducts(category) {
   throw response;
 }
 
+export async function getAllProducts() {
+  const response = await fetch(baseUrl + "products");
+  if (response.ok) return response.json();
+  throw response;
+}
+
+
 export async function getProduct(id) {
   const response = await fetch(baseUrl + "products/" + id);
   if (response.ok) return response.json();

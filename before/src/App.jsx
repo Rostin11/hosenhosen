@@ -3,7 +3,6 @@ import React, { useState, useEffect } from "react";
 import "./App.css";
 import Cart from "./Cart";
 //TODO Wieder einfügen
-import ProductList from "./ProductList";
 //import { getCartItems } from "./cartService.js";
 import Footer from "./Footer";
 import Header from "./Header";
@@ -15,6 +14,7 @@ export default function App() {
     const [cart, setCart] = useState([]);
 
 
+    //TODO
     const initCart = () => {
         try {
             return JSON.parse(localStorage.getItem("cart")) ? [] : null;
@@ -38,11 +38,19 @@ export default function App() {
     // cart functions
     function addToCart({ id, sku, name, price }) {
         setCart((items) => {
-            const itemInCart = items.find((i) => i.sku === sku);
+
+
+
+            const itemInCart = items.find((i) => i.sku.sku === sku.sku);
+            console.log("DEBUG BB")
+            console.log(items)
+            console.log(itemInCart)
+            //TODO Mehrere gleiche schuhe können noch nicht hinzugefügt werden
+
             if (itemInCart) {
                 // Return new array with the matching item replaced
                 return items.map((i) =>
-                    i.sku === sku ? { ...i, quantity: i.quantity + 1, name, price } : i
+                    i.sku.sku === sku.sku ? { ...i, quantity: i.quantity + 1, name, price } : i
                 );
             } else {
                 // Return new array with the new item appended
@@ -98,7 +106,7 @@ export default function App() {
     //            deleteItem={deleteItem}
     //            emptyCart={emptyCart}
     //        />
-    //        <ProductList addToCart={addToCart} />
+    //        <Products addToCart={addToCart} />
     //        <CartTest cart={cart} />
     //        <footer>@bbw 2020</footer>
     //    </div>
@@ -137,7 +145,7 @@ export default function App() {
             <div className="container">
 
                 {/*todo*/}
-                {/*<ProductList addToCart={addToCart} />*/}
+                {/*<Products addToCart={addToCart} />*/}
                 {/*<CartTest cart={cart} />*/}
 
                 <h1>Hallo</h1>
