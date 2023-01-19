@@ -1,5 +1,6 @@
-package com.example
+package ch.bbw.hosenhosen
 
+import ch.bbw.hosenhosen.plugins.configureRouting
 import io.ktor.server.routing.*
 import io.ktor.http.*
 import io.ktor.server.sessions.*
@@ -10,7 +11,6 @@ import io.ktor.client.request.*
 import io.ktor.client.statement.*
 import kotlin.test.*
 import io.ktor.server.testing.*
-import com.example.plugins.*
 
 class ApplicationTest {
     @Test

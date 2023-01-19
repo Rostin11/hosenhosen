@@ -1,4 +1,4 @@
-package com.example.plugins
+package ch.bbw.hosenhosen.plugins
 
 import io.ktor.server.sessions.*
 import io.ktor.server.application.*
