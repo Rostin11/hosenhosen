@@ -9,17 +9,22 @@ export default function Detail({addToCart}) {
   const [chosenSku, setChosenSku] = useState("");
   const { id } = useParams();
   const navigate = useNavigate();
-  const { data: product, loading, error } = useFetch(`products/${id}`);
+    const {data: products, loading, error} = useFetch(
+        "products"
+    );
 
-  if (loading) return <Spinner />;
-  if (!product) return <PageNotFound />;
+    console.log("TESTTESTESTSET")
+    console.log(products)
+
+    if (loading) return <Spinner />;
+  if (!products[id-1]) return <PageNotFound />;
   if (error) throw error;
 
   return (
     <div id="detail">
-      <h1>{product.name}</h1>
-      <p>{product.description}</p>
-      <p id="price">${product.price}</p>
+      <h1>{products[id-1].name}</h1>
+      <p>{products[id-1].description}</p>
+      <p id="price">${products[id-1].price}</p>
         <select
             id="size"
             value={chosenSize}
@@ -34,7 +39,7 @@ export default function Detail({addToCart}) {
           Add to cart
         </button>
       </p>
-      <img src={`/images/${product.image}`} alt={product.category} />
+      <img src={`/images/${products[id-1].image}`} alt={products[id-1].category} />
     </div>
   );
 
@@ -42,7 +47,7 @@ export default function Detail({addToCart}) {
 
       return (
           <>
-              {product.skus.map(function(sku){
+              {products[id-1].skus.map(function(sku){
                   return (<option value={sku.size}>{sku.size}</option>)
               })}
           </>
@@ -53,7 +58,7 @@ export default function Detail({addToCart}) {
         setChosenSize(e.target.value)
 
 
-        let filter = product.skus.filter(it => it.size.toString() === e.target.value.toString() );
+        let filter = products[id-1].skus.filter(it => it.size.toString() === e.target.value.toString() );
 
         setChosenSku(filter[0])
 
@@ -61,7 +66,7 @@ export default function Detail({addToCart}) {
     }
 
   function addToCartAndNavigate(){
-      addToCart({category: product.category, sku: chosenSku , description: product.description, id: product.id, image: product.image,name: product.name, price: product.price, size: chosenSize, chosenSku: chosenSku})
+      addToCart({category: products[id-1].category, sku: chosenSku , description: products[id-1].description, id: products[id-1].id, image: products[id-1].image,name: products[id-1].name, price: products[id-1].price, size: chosenSize, chosenSku: chosenSku})
       navigate("/cart")
   }
 }

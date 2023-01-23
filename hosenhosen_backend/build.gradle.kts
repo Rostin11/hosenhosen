@@ -32,6 +32,7 @@ dependencies {
     implementation("mysql:mysql-connector-java:8.0.30")
     implementation("org.mindrot:jbcrypt:0.4")
     implementation("io.insert-koin:koin-ktor:3.2.2")
+    implementation("io.ktor:ktor-server-cors-jvm:2.1.3")
 
     testImplementation("io.mockk:mockk:1.13.2")
     testImplementation("org.junit.jupiter:junit-jupiter:5.9.0")

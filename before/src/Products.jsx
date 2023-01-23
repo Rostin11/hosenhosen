@@ -9,8 +9,8 @@ export default function Products({addToCart}) {
   const [size, setSize] = useState("");
   const { category } = useParams();
 
-  const { data: products, loading, error } = useFetch(
-    "products?category=" + category
+  const {data: products, loading, error} = useFetch(
+      "products"
   );
 
 
