@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import useFetchAll from "./services/useFetchAll";
 import Spinner from "./Spinner";
 import useFetch from "./services/useFetch";
@@ -8,7 +8,6 @@ export default function Cart({ cart, updateQuantity }) {
 
   console.log("DEBUG G")
   console.log(cart)
-
 
   const { data: products, loading, error } = useFetch(
       "products"
