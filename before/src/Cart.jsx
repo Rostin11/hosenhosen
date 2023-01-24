@@ -50,10 +50,24 @@ export default function Cart({cart, updateQuantity}) {
     if (error) throw error;
 
 
+    function calculateCart(cart) {
+        console.log("RAWRARW")
+        var gesamtPreis = 0;
+        cart.forEach(function (value) {
+            gesamtPreis += value.quantity * value.price
+        });
+        return <>
+            Gesamtpreis: {gesamtPreis}
+        </>
+    }
+
     return (
         <section id="cart">
             <h1>Cart</h1>
             <ul>{cart.map(renderItem)}</ul>
+            <div>
+                {calculateCart(cart)}
+            </div>
         </section>
     );
 }
